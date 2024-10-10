@@ -1,0 +1,40 @@
+<a
+  type="button"
+  class="btnNuevo btn btn-danger mt-5"
+  data-bs-toggle="modal"
+  data-bs-target="#modal"
+>Nuevo Rol</a>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>ID</th>
+      <th>Descripción</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody id="content-table">
+    {{#each roles}}
+      <tr>
+        <td>{{this.id}}</td>
+        <td>{{this.name}}</td>
+        <td>
+          <a
+          class="btn btn-primary btn-edit"
+            data-id="{{this.id}}"
+          >Editar</a>
+          <a
+            class="btn btn-danger"
+            onclick="return showAlertToDelete('Seguro que desea eliminar este rol', 'roles', {{this.id}})"
+          >Eliminar</a>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{> role/modal}}
+
+
+
+

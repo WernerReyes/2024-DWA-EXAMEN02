@@ -1,0 +1,49 @@
+<a
+  type="button"
+  class="btnNuevo btn btn-danger mt-5"
+  data-bs-toggle="modal"
+  data-bs-target="#modal"
+>Nuevo Usuario</a>
+
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Correo</th>
+        <th>Contraseña</th>
+        <th>Telefono</th>
+        <th>Dni</th>
+        <th>Rol</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody id="content-table">
+    {{#each users}}
+      <tr class="row-{{this.id}}">
+        <td>{{this.id}}</td>
+        <td>{{this.firstname}}</td>
+        <td>{{this.lastname}}</td>
+        <td>{{this.email}}</td>
+        <td>{{this.password}}</td>
+        <td>{{this.phone}}</td>
+        <td>{{this.dni}}</td>
+        <td data-name="{{this.role.name}}">{{this.role.name}}</td>
+        <td>
+          <a
+          class="btn btn-primary btn-edit"
+            data-id="{{this.id}}"
+          >Editar</a>
+          <a
+            class="btn btn-danger"
+            onclick="return showAlertToDelete('Seguro que desea eliminar este usuario', 'users', {{this.id}})"
+          >Eliminar</a>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{> user/modal}}
+
